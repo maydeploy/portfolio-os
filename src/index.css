@@ -1,68 +1,95 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
+@layer base {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    font-family: 'SF Pro Display', system-ui, Geneva, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+    
+    /* Retro Mac color scheme */
+    color-scheme: light;
+    color: #000000;
+    background-color: #F2F0E6;
+    
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
-  a:hover {
-    color: #747bff;
+  
+  body {
+    margin: 0;
+    background-color: #F2F0E6;
+    color: #000000;
+    min-height: 100vh;
   }
-  button {
-    background-color: #f9f9f9;
+  
+  /* Classic Mac-style scrollbars */
+  ::-webkit-scrollbar {
+    width: 16px;
+    background-color: #C0C0C0;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: #808080;
+    border: 2px solid #C0C0C0;
+    border-radius: 0;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background-color: #F0F0F0;
+  }
+}
+
+@layer components {
+  /* Classic Mac window style */
+  .mac-window {
+    @apply bg-mac-window border-2 border-mac-border shadow-mac-raised;
+  }
+  
+  /* Classic Mac button style */
+  .mac-button {
+    @apply bg-mac-gray border border-mac-border px-4 py-2 
+           shadow-mac-raised hover:shadow-mac-pressed 
+           active:shadow-mac-inset transition-shadow duration-75
+           font-geneva text-sm font-medium;
+  }
+  
+  /* Retro Mac title bar */
+  .mac-title-bar {
+    @apply bg-mac-menu border-b border-mac-border px-2 py-1 
+           text-sm font-geneva flex items-center justify-between;
+  }
+  
+  /* Classic Mac menu item */
+  .mac-menu-item {
+    @apply px-3 py-1 hover:bg-mac-highlight hover:text-white 
+           cursor-pointer transition-colors duration-100;
+  }
+  
+  /* Retro CRT screen effect */
+  .crt-screen {
+    @apply relative overflow-hidden;
+  }
+  
+  .crt-screen::before {
+    content: '';
+    @apply absolute inset-0 pointer-events-none z-10;
+    background: linear-gradient(
+      90deg,
+      transparent 50%,
+      rgba(0, 255, 0, 0.03) 50%
+    );
+    background-size: 4px 4px;
+    animation: flicker 0.15s infinite linear;
+  }
+  
+  /* Pixelated text for retro feel */
+  .pixel-text {
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
   }
 }
