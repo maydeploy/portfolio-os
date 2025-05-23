@@ -1,6 +1,24 @@
-# React + TypeScript + Vite
+# Portfolio OS
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern portfolio website built with React + TypeScript + Vite.
+
+This project provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+
+## Development
+
+```bash
+npm install
+npm run dev
+```
+
+## Tech Stack
+
+- **React 18** - Modern React with hooks
+- **TypeScript** - Type safety and better developer experience  
+- **Vite** - Fast development and building
+- **ESLint** - Code linting and formatting
+
+## Available Plugins
 
 Currently, two official plugins are available:
 
